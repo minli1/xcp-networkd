@@ -19,6 +19,13 @@ open Network_interface
 
 module D = Debug.Make(struct let name = "network_utils" end)
 open D
+exception Script_missing of string
+exception Script_error of (string * string) list
+exception Read_error of string
+exception Write_error of string
+exception Not_implemented
+exception Vlan_in_use of (string * int)
+exception PVS_proxy_connection_error
 
 type util_error =
 | Bus_out_of_range
